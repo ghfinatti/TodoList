@@ -1,0 +1,122 @@
+html{
+    height: 100%;
+    width: 100%;
+    border: 0px;
+    margin: 0px;
+}
+
+body{
+    display: flex;
+    flex-direction: row;
+    flex-wrap:wrap;
+    height: 100%;
+    width: 100%;
+    border: 0px;
+    margin: 0px;
+}
+
+.header{
+    display: flex;
+    flex-direction: row;
+    background-color: rgba(34, 34, 59, 1);
+    width: 100%;
+    height: 15%;
+}
+
+.left-header{
+    display: flex;
+    width:fit-content;
+    align-items: center;
+}
+
+.logoimg{
+    width: 8%;
+    margin:20px;
+}
+
+h1{
+    color:white;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.nav-menu{
+    width: 15%;
+    height: 85%;
+    background-color: rgb(201, 173, 167);
+}
+
+.todos-display{
+    display: flex;
+    width: 85%;
+    height: 85%;
+    background-color: rgba(242, 233, 228, 1);
+}
+
+.project-form{
+    display: flex;
+    z-index: -1;
+    flex-direction: column;
+    position: absolute;
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
+    margin:auto;
+    min-width: 386px;
+    min-height: 245px;
+    width: 20%;
+    height: 30%;
+    backdrop-filter: blur(64px) saturate(100%);
+    -webkit-backdrop-filter: blur(64px) saturate(100%);
+    background-color: rgba(0, 0, 0, 0.32);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.form-title{
+    align-self: center;
+    margin-top: 15px;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    margin-right: 5%;
+    margin-left: 5%;
+}
+
+label, input{
+    margin: 3px;
+}
+
+.submit-btns{
+    display: flex;
+    margin-top:10px;
+    width: 100%;
+    justify-content: flex-end;
+}
+
+#high-btn, #normal-btn, #low-btn, #cancel, #submit{
+    background-color:rgba(211, 212, 255, 1);
+    width: 20%;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+#cancel, #submit{
+    background-color: rgba(211, 212, 255, 1);
+    border: 1px solid black;
+}
+
+#high-btn:hover{
+    background-color: rgba(176, 255, 165, 1);
+}
+
+#normal-btn:hover{
+    background-color: rgba(255, 244, 165, 1);
+}
+
+#low-btn:hover{
+    background-color: rgba(255, 165, 165, 1);
+}
