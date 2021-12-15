@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="shortcut icon" type="image/x-icon" href="/src/favicon.ico">
+        <title>Just-do-it!</title>
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+    </head>
+    <body>
+      <div class="header">
+        <div class="left-header">
+            <img class="logoimg" src="/src/images/logo.png">
+            <h1>Just-do-it!</h1>
+        </div>
+      </div> 
+      <div class="nav-menu">
+        <div class="new-project">Projects</div>
+      </div>
+      <div class="todos-display">
+      </div>
+    </body>
+    <div class="project-form">
+      <div class="form-title">New Project</div>
+      <form>
+        <label for="title">Name:</label><br>
+        <input type="text" id="title"><br>
+        <label for="date">Due date:</label><br>
+        <input type="date" id="date"><br>
+        <label>Priority:</label>
+        <div class="priority-btns">
+          <input type="button" id="high-btn" value="High">
+          <input type="button" id="normal-btn" value="Normal">
+          <input type="button" id="low-btn" value="Low">
+        </div>
+        <div class="submit-btns">
+          <input type="button" id="cancel" value="Cancel">
+          <input type="button" id="submit" value="Add">
+        </div>
+      </form>
+    </div>
+    <script src="bundle.js"></script>
+</html>
