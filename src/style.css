@@ -21,12 +21,14 @@ body{
     background-color: rgba(34, 34, 59, 1);
     width: 100%;
     height: 15%;
+    min-height: 130px;
 }
 
 .left-header{
     display: flex;
     width:fit-content;
     align-items: center;
+    min-height: 130px;
 }
 
 .logoimg{
@@ -97,26 +99,9 @@ label, input{
     justify-content: flex-end;
 }
 
-#high-btn, #normal-btn, #low-btn, #cancel, #submit{
+#cancel, #submit{
     background-color:rgba(211, 212, 255, 1);
     width: 20%;
     border: 1px solid black;
     border-radius: 5px;
-}
-
-#cancel, #submit{
-    background-color: rgba(211, 212, 255, 1);
-    border: 1px solid black;
-}
-
-#high-btn:hover{
-    background-color: rgba(176, 255, 165, 1);
-}
-
-#normal-btn:hover{
-    background-color: rgba(255, 244, 165, 1);
-}
-
-#low-btn:hover{
-    background-color: rgba(255, 165, 165, 1);
 }
