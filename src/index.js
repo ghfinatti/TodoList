@@ -9,3 +9,4 @@ const testTask2 = new task('test task title2', 'test task description2');
 
 DOM.newProject.addEventListener('click', DOM.openProjectForm);
 DOM.addButton.addEventListener('click', DOM.addProject);
+DOM.cancelButton.addEventListener('click', DOM.closeProjectForm);
