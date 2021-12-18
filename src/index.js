@@ -8,5 +8,5 @@ const testTask1 = new task('test task title', 'test task description');
 const testTask2 = new task('test task title2', 'test task description2');
 
 DOM.newProject.addEventListener('click', DOM.openProjectForm);
-DOM.addButton.addEventListener('click', DOM.addProject);
+DOM.addButton.addEventListener('click', DOM.addProjectToArray);
 DOM.cancelButton.addEventListener('click', DOM.closeProjectForm);

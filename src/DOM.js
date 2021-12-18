@@ -22,7 +22,7 @@ export const closeProjectForm = () => {
     setTimeout(() => {projectForm.style.zIndex = "-1"}, 150);
 };
 
-export const addProject = () => {
+export const addProjectToArray = () => {
     const nameInput = document.querySelector('#name');
     const dateInput = document.querySelector('#date');
     const priorityInput = getPriority()
@@ -31,10 +31,26 @@ export const addProject = () => {
     }else{
         const newProject = new project(nameInput.value,dateInput.value, priorityInput);
         newProject.addToProjects()
+        addProjectToDom(nameInput.value);
         closeProjectForm()
         console.log(projects)
     }
 };
+
+export const addProjectToDom = (projectName) => {
+    const projectsContainer = document.querySelector('.projects-container');
+    const projectDiv = document.createElement('div');
+    const nameDiv = document.createElement('div');
+    const arrowDiv = document.createElement('div');
+    projectDiv.classList.add('project');
+    projectsContainer.appendChild(projectDiv);
+    nameDiv.textContent = projectName
+    projectDiv.appendChild(nameDiv);
+    arrowDiv.classList.add('arrow');
+    arrowDiv.textContent = '>';
+    projectDiv.appendChild(arrowDiv);
+    
+}
 
 export const getPriority = () => {
     const priorityInput = document.querySelectorAll('.priority-btns');
@@ -48,3 +64,5 @@ export const getPriority = () => {
         return "none"
     }
 }
+
+
