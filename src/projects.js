@@ -1,4 +1,4 @@
-const projects = [{title:"First Project",dueDate:"2050-12-24",priority:"high",tasks:[]}];
+const projects = [{title:"First Project",dueDate:"2050-12-25",priority:"high",tasks:[]}];
 
 class project{
 

@@ -31,28 +31,32 @@ export const addProjectToArray = () => {
     }else{
         const newProject = new project(nameInput.value,dateInput.value, priorityInput);
         newProject.addToProjects()
-        addProjectToDom(nameInput.value);
+        addProjectToMenu(nameInput.value);
         closeProjectForm()
         console.log(projects)
     }
 };
 
-export const addProjectToDom = (projectName) => {
-    const projectsContainer = document.querySelector('.projects-container');
-    const projectDiv = document.createElement('div');
-    const nameDiv = document.createElement('div');
-    const arrowDiv = document.createElement('div');
-    projectDiv.classList.add('project');
-    projectsContainer.appendChild(projectDiv);
-    nameDiv.textContent = projectName
-    projectDiv.appendChild(nameDiv);
-    arrowDiv.classList.add('arrow');
-    arrowDiv.textContent = '>';
-    projectDiv.appendChild(arrowDiv);
-    
+const createDiv = (text, cssClass) => {
+    const newElement = document.createElement('div');
+    newElement.classList.add(cssClass);
+    newElement.textContent = text;
+    return newElement
 }
 
-export const getPriority = () => {
+const addProjectToMenu = (projectName) => {
+    const projectsContainer = document.querySelector('.projects-container');
+    const projectDiv = createDiv('','project');
+    const nameDiv = createDiv(projectName);
+    const arrowDiv = createDiv('>','arrow');
+    projectsContainer.appendChild(projectDiv);
+    projectDiv.appendChild(nameDiv);
+    projectDiv.appendChild(arrowDiv);
+}
+
+
+
+const getPriority = () => {
     const priorityInput = document.querySelectorAll('.priority-btns');
     if (priorityInput[0].checked == true){
         return "high"
