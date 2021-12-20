@@ -10,3 +10,6 @@ const testTask2 = new task('test task title2', 'test task description2');
 DOM.newProject.addEventListener('click', DOM.openProjectForm);
 DOM.addButton.addEventListener('click', DOM.addProjectToArray);
 DOM.cancelButton.addEventListener('click', DOM.closeProjectForm);
+// DOM.projectsFromMenu.forEach(projectFromMenu => {projectFromMenu.addEventListener('click',DOM.populateProjectScreen)});
+
+DOM.addProjectToMenu('First Project');
