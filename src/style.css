@@ -206,3 +206,7 @@ label, input{
     height: 15px;
     margin-top: 2px;
 }
+
+.deletebutton{
+    height: 20px;
+}

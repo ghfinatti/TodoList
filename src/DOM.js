@@ -4,6 +4,7 @@ export const newProject = document.querySelector('#add-project-btn');
 export const addButton = document.querySelector('#submit');
 export const cancelButton = document.querySelector('#cancel');
 export const projectsFromMenu = document.querySelectorAll('.project');
+export const deleteBtn = document.querySelector('.deletebutton');
 
 export const openProjectForm = () => {
     const projectForm = document.querySelector('.project-form');
@@ -68,11 +69,11 @@ export const addProjectToMenu = (projectName) => {
 const getPriority = () => {
     const priorityInput = document.querySelectorAll('.priority-btns');
     if (priorityInput[0].checked == true){
-        return "high"
+        return "High"
     }else if(priorityInput[1].checked == true){
-        return "normal"
+        return "Normal"
     }else if(priorityInput[2].checked == true){
-        return "low"
+        return "Low"
     }else{
         return null
     }
@@ -88,22 +89,45 @@ const emptyDiv = (div) => {
 export const populateProjectScreen = (e) => {
     const todosDisplay = document.querySelector('.todos-display');
     const projectPosition = e.target.dataset.projectnum;
+    const projectName = document.querySelector('.project-name');
+    const projectDate = document.querySelector('.project-date');
+    const projectPriority = document.querySelector('.project-priority');
+    const deleteBtn = document.querySelector('.deletebutton');
 
-    emptyDiv('.todos-display');
+    projectName.textContent = `${projects[projectPosition].title}`;
+    projectDate.textContent = `Date: ${projects[projectPosition].dueDate}`;
+    projectPriority.textContent = `Priority: ${projects[projectPosition].priority}`;
+
+    emptyDiv('.project-tasks');
     
     //Project Header
-    const projectHeader = createDiv('', 'project-header');
-    const projectName = createDiv(projects[projectPosition].title,'project-name');
-    const projectDate = createDiv(`Date: ${projects[projectPosition].dueDate}`,'project-date');
-    const projectPriority = createDiv(`Priority: ${projects[projectPosition].priority}`, 'project-priority');
-    todosDisplay.appendChild(projectHeader);
-    projectHeader.appendChild(projectName);
-    projectHeader.appendChild(projectDate);
-    projectHeader.appendChild(projectPriority);
+    // const projectHeader = createDiv('', 'project-header');
+    // const projectName = createDiv(projects[projectPosition].title,'project-name');
+    // const projectDate = createDiv(`Date: ${projects[projectPosition].dueDate}`,'project-date');
+    // const projectPriority = createDiv(`Priority: ${projects[projectPosition].priority}`, 'project-priority');
+    // const deleteBtn = document.createElement('input');
+    // deleteBtn.classList.add('deletebutton');
+    // deleteBtn.type = 'button';
+    // deleteBtn.value = 'Delete';
+    // todosDisplay.appendChild(projectHeader);
+    // projectHeader.appendChild(projectName);
+    // projectHeader.appendChild(projectDate);
+    // projectHeader.appendChild(projectPriority);
+    // projectHeader.appendChild(deleteBtn);
 
     //Project Tasks
 
     //create logic for populating with selected project info.
+
+    //deleteBtn.addEventListener('click', getProjectByName);
+}
+
+export const getProjectByName = (name) => {
+    let i = 0
+    while (name != projects[i].title){
+        console.log(projects[i].title)
+        i++
+    }
 }
 
 
