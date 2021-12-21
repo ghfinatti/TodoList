@@ -30,7 +30,11 @@ export const addProjectToArray = () => {
     const nameInput = document.querySelector('#name');
     const dateInput = document.querySelector('#date');
     const priorityInput = getPriority()
-    if (priorityInput === null || nameInput.value == "" || dateInput.value == ""){
+    const repeatedName = checkForRepeatedName(nameInput.value);
+    if (repeatedName == true){
+        alert("Project name already used")
+    }
+    else if (priorityInput === null || nameInput.value == "" || dateInput.value == ""){
         alert("C'mon, be nice and fill all information")
     }else{
         const newProject = new project(nameInput.value,dateInput.value, priorityInput);
@@ -122,12 +126,22 @@ export const populateProjectScreen = (e) => {
     //deleteBtn.addEventListener('click', getProjectByName);
 }
 
-export const getProjectByName = (name) => {
+export const getProjectByName = () => {
+    const projectName = document.querySelector('.project-name');
     let i = 0
-    while (name != projects[i].title){
-        console.log(projects[i].title)
-        i++
+    while(projects[i].title != projectName.textContent){
+        i++        
     }
+    return i
 }
 
+const checkForRepeatedName = (name) => {
+    let repeatedName = false
+    for(let i = 0; i < projects.length; i++){
+        if (name === projects[i].title){
+            repeatedName = true
+        }
+    }
+    return repeatedName
+}
 
