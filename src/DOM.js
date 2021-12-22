@@ -39,7 +39,8 @@ export const addProjectToArray = () => {
     }else{
         const newProject = new project(nameInput.value,dateInput.value, priorityInput);
         newProject.addToProjects()
-        addProjectToMenu(nameInput.value);
+        populateProjectMenu();
+        //addProjectToMenu(nameInput.value);
         closeProjectForm()
     }
 };
@@ -54,7 +55,7 @@ const createDiv = (text, cssClass) => {
 export const addProjectToMenu = (projectName) => {
     const projectsContainer = document.querySelector('.projects-container');
     const projectDiv = createDiv('','project');
-    const nameDiv = createDiv(projectName);
+    const nameDiv = createDiv(projectName,'menuprojectname');
     const arrowDiv = createDiv('>','arrow');
 
     projectDiv.dataset.projectnum = projects.length-1;
@@ -65,9 +66,9 @@ export const addProjectToMenu = (projectName) => {
     projectDiv.appendChild(nameDiv);
     projectDiv.appendChild(arrowDiv);
 
-    const projectsFromMenu = document.querySelectorAll('.project');
+    const projectsFromMenu = document.querySelectorAll('.menuprojectname');
     projectsFromMenu.forEach(projectFromMenu => {projectFromMenu.addEventListener('click',populateProjectScreen)});
-};
+};project
 
 
 const getPriority = () => {
@@ -91,9 +92,10 @@ const emptyDiv = (div) => {
 };
 
 export const populateProjectScreen = (e) => {
+    console.log(e.target.textContent);
     const todosDisplay = document.querySelector('.todos-display');
-    const projectPosition = e.target.dataset.projectnum;
     const projectName = document.querySelector('.project-name');
+    const projectPosition = getProjectByIndex(e.target.textContent);
     const projectDate = document.querySelector('.project-date');
     const projectPriority = document.querySelector('.project-priority');
     const deleteBtn = document.querySelector('.deletebutton');
@@ -126,11 +128,10 @@ export const populateProjectScreen = (e) => {
     //deleteBtn.addEventListener('click', getProjectByName);
 }
 
-export const getProjectByName = () => {
-    const projectName = document.querySelector('.project-name');
+const getProjectByIndex = (projectName) => {
     let i = 0
-    while(projects[i].title != projectName.textContent){
-        i++        
+    while(projects[i].title != projectName){
+        i++
     }
     return i
 }
@@ -138,10 +139,16 @@ export const getProjectByName = () => {
 const checkForRepeatedName = (name) => {
     let repeatedName = false
     for(let i = 0; i < projects.length; i++){
-        if (name === projects[i].title){
+        if (name.toLowerCase() === projects[i].title.toLowerCase()){
             repeatedName = true
         }
     }
     return repeatedName
 }
 
+const populateProjectMenu = () => {
+    emptyDiv('.projects-container');
+    for (let i = 0; i < projects.length;i++){
+        addProjectToMenu(projects[i].title);
+    }
+}
