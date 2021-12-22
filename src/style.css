@@ -163,15 +163,16 @@ label, input{
 
 .project-header{
     display: flex;
+    flex-wrap: wrap;
     justify-content:space-evenly;
     margin-top: 15px;
     width: 60%;
-    height: 25px;
+    height: fit-content;
     color:black;
 }
 
 .project-date, .project-name, .project-priority{
-    font-size: 20px;
+    font-size: 1.2rem;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
@@ -191,7 +192,7 @@ label, input{
     display:flex;
     flex-direction: row;
     width: 90%;
-    height: 15px;
+    height: 25px;
     align-self: center;
     margin-top: 15px;
 }
@@ -204,9 +205,45 @@ label, input{
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-size: 15px;
     height: 15px;
-    margin-top: 2px;
+    margin-top: 5px;
 }
 
 .deletebutton{
     height: 20px;
+}
+
+.taskscontainer{
+    height: fit-content;
+    margin:0px;
+}
+
+.addtaskcontainer{
+    display:flex;
+    flex-direction: row;
+    margin-left: 20px;
+    margin-top:10px;
+}
+
+.taskinput{
+    width: 60%;
+}
+
+.addtask{
+    align-self: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.editicon{
+    height:15px;
+}
+
+.deleteicon{
+    height:15px;
+    align-self: center;
+    margin-left: 10px;
+}
+
+.deleteicon:hover{
+    transform: scale(1.5);
+    filter: saturate(7);
 }

@@ -30,17 +30,22 @@
           <div class="project-priority">Priority: High</div>
           <input type="button" class="deletebutton" value="Delete">
         </div>
-        <div class=project-tasks>
-          <div class="task-container">
-            <input id="task-checkbox" type="checkbox">
-            <div class="task">First Task</div>
+        <div class="project-tasks">
+          <div class="addtaskcontainer">
+            <div class="addtask">Add Task:</div>
+            <input class="taskinput" type="text">
           </div>
-          <div class="task-container">
-            <input id="task-checkbox" type="checkbox">
-            <div class="task">Second Task</div>
-          </div>
+          <ol class="taskscontainer">
+            <div class="task-container">
+              <li class="task">First Task</li>
+              <img class="deleteicon" src="/src/images/delete.png">
+            </div>
+            <div class="task-container">
+              <li class="task">Second Task</li>
+              <img class="deleteicon" src="/src/images/delete.png">
+            </div>
+          </ol>
         </div>
-      </div>
     </body>
       <div class="project-form">
         <div class="form-title">New Project</div>

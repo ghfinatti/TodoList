@@ -21,8 +21,8 @@ class project{
 }
 
 class task{
-    constructor(title, checklist){
-        this.title = title;
+    constructor(description){
+        this.description = description;
         this.checklist = false;
     }
 }

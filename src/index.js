@@ -1,14 +1,13 @@
-import _ from 'lodash';
 import './style.css';
 import { project, projects, task } from './projects';
-import * as DOM from './DOM';
+import * as DOMProj from './DOM-Projects';
 
 const testProject = new project('test title', 'test description', 'test dueDate', 'test priority', 'test checklist')
 const testTask1 = new task('test task title', 'test task description');
 const testTask2 = new task('test task title2', 'test task description2');
 
-DOM.newProject.addEventListener('click', DOM.openProjectForm);
-DOM.addButton.addEventListener('click', DOM.addProjectToApp);
-DOM.cancelButton.addEventListener('click', DOM.closeProjectForm);
-DOM.deleteBtn.addEventListener('click',DOM.deleteProject);
-DOM.projectsFromMenu.forEach(projectFromMenu => {projectFromMenu.addEventListener('click',DOM.populateProjectScreen)});
+DOMProj.newProject.addEventListener('click', DOMProj.openProjectForm);
+DOMProj.addButton.addEventListener('click', DOMProj.addProjectToApp);
+DOMProj.cancelButton.addEventListener('click', DOMProj.closeProjectForm);
+DOMProj.deleteBtn.addEventListener('click',DOMProj.deleteProject);
+DOMProj.projectsFromMenu.forEach(projectFromMenu => {projectFromMenu.addEventListener('click',DOMProj.populateProjectScreen)});

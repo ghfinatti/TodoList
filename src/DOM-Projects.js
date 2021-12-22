@@ -1,5 +1,4 @@
-import { update } from "lodash";
-import { project, projects, task } from "./projects";
+import { project, projects } from "./projects";
 
 export const newProject = document.querySelector('#add-project-btn');
 export const addButton = document.querySelector('#submit');
@@ -101,15 +100,13 @@ const emptyDiv = (div) => {
 };
 
 export const populateProjectScreen = (e) => {
-    const todosDisplay = document.querySelector('.todos-display');
     const projectPosition = getProjectByIndex(e.target.textContent);
-    const deleteBtn = document.querySelector('.deletebutton');
 
     projectName.textContent = `${projects[projectPosition].title}`;
     projectDate.textContent = `Date: ${projects[projectPosition].dueDate}`;
     projectPriority.textContent = `Priority: ${projects[projectPosition].priority}`;
 
-    emptyDiv('.project-tasks');
+    emptyDiv('.taskscontainer');
 }
 
 const getProjectByIndex = (projectName) => {
