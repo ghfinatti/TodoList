@@ -1,3 +1,4 @@
+import { update } from "lodash";
 import { project, projects, task } from "./projects";
 
 export const newProject = document.querySelector('#add-project-btn');
@@ -5,6 +6,9 @@ export const addButton = document.querySelector('#submit');
 export const cancelButton = document.querySelector('#cancel');
 export const projectsFromMenu = document.querySelectorAll('.project');
 export const deleteBtn = document.querySelector('.deletebutton');
+const projectName = document.querySelector('.project-name');
+const projectDate = document.querySelector('.project-date');
+const projectPriority = document.querySelector('.project-priority');
 
 export const openProjectForm = () => {
     const projectForm = document.querySelector('.project-form');
@@ -26,7 +30,7 @@ export const closeProjectForm = () => {
     setTimeout(() => {projectForm.style.zIndex = "-1"}, 150);
 };
 
-export const addProjectToArray = () => {
+export const addProjectToApp = () => {
     const nameInput = document.querySelector('#name');
     const dateInput = document.querySelector('#date');
     const priorityInput = getPriority()
@@ -40,10 +44,19 @@ export const addProjectToArray = () => {
         const newProject = new project(nameInput.value,dateInput.value, priorityInput);
         newProject.addToProjects()
         populateProjectMenu();
-        //addProjectToMenu(nameInput.value);
-        closeProjectForm()
+        closeProjectForm();
+        updateToLastCreatedProject();
     }
 };
+
+const updateToLastCreatedProject = () => {
+    const lastProjectIndex = projects.length-1;
+    projectName.textContent = `${projects[lastProjectIndex].title}`;
+    projectDate.textContent = `Date: ${projects[lastProjectIndex].dueDate}`;
+    projectPriority.textContent = `Priority: ${projects[lastProjectIndex].priority}`;
+    
+    //update with tasks logic
+}
 
 const createDiv = (text, cssClass) => {
     const newElement = document.createElement('div');
@@ -52,15 +65,11 @@ const createDiv = (text, cssClass) => {
     return newElement
 }
 
-export const addProjectToMenu = (projectName) => {
+const addProjectToMenu = (projectName) => {
     const projectsContainer = document.querySelector('.projects-container');
     const projectDiv = createDiv('','project');
     const nameDiv = createDiv(projectName,'menuprojectname');
     const arrowDiv = createDiv('>','arrow');
-
-    projectDiv.dataset.projectnum = projects.length-1;
-    nameDiv.dataset.projectnum = projects.length-1;
-    arrowDiv.dataset.projectnum = projects.length-1;
 
     projectsContainer.appendChild(projectDiv);
     projectDiv.appendChild(nameDiv);
@@ -68,7 +77,7 @@ export const addProjectToMenu = (projectName) => {
 
     const projectsFromMenu = document.querySelectorAll('.menuprojectname');
     projectsFromMenu.forEach(projectFromMenu => {projectFromMenu.addEventListener('click',populateProjectScreen)});
-};project
+};
 
 
 const getPriority = () => {
@@ -92,12 +101,8 @@ const emptyDiv = (div) => {
 };
 
 export const populateProjectScreen = (e) => {
-    console.log(e.target.textContent);
     const todosDisplay = document.querySelector('.todos-display');
-    const projectName = document.querySelector('.project-name');
     const projectPosition = getProjectByIndex(e.target.textContent);
-    const projectDate = document.querySelector('.project-date');
-    const projectPriority = document.querySelector('.project-priority');
     const deleteBtn = document.querySelector('.deletebutton');
 
     projectName.textContent = `${projects[projectPosition].title}`;
@@ -105,27 +110,6 @@ export const populateProjectScreen = (e) => {
     projectPriority.textContent = `Priority: ${projects[projectPosition].priority}`;
 
     emptyDiv('.project-tasks');
-    
-    //Project Header
-    // const projectHeader = createDiv('', 'project-header');
-    // const projectName = createDiv(projects[projectPosition].title,'project-name');
-    // const projectDate = createDiv(`Date: ${projects[projectPosition].dueDate}`,'project-date');
-    // const projectPriority = createDiv(`Priority: ${projects[projectPosition].priority}`, 'project-priority');
-    // const deleteBtn = document.createElement('input');
-    // deleteBtn.classList.add('deletebutton');
-    // deleteBtn.type = 'button';
-    // deleteBtn.value = 'Delete';
-    // todosDisplay.appendChild(projectHeader);
-    // projectHeader.appendChild(projectName);
-    // projectHeader.appendChild(projectDate);
-    // projectHeader.appendChild(projectPriority);
-    // projectHeader.appendChild(deleteBtn);
-
-    //Project Tasks
-
-    //create logic for populating with selected project info.
-
-    //deleteBtn.addEventListener('click', getProjectByName);
 }
 
 const getProjectByIndex = (projectName) => {
@@ -150,5 +134,17 @@ const populateProjectMenu = () => {
     emptyDiv('.projects-container');
     for (let i = 0; i < projects.length;i++){
         addProjectToMenu(projects[i].title);
+    }
+}
+
+export const deleteProject = () => {
+    if (projects.length > 1){
+        const projectPosition = getProjectByIndex(projectName.textContent);
+        projects.splice(projectPosition,1);
+        console.log(projects)
+        populateProjectMenu();
+        updateToLastCreatedProject();
+    }else{
+        alert(`You can't delete all projects`);
     }
 }

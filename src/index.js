@@ -8,7 +8,7 @@ const testTask1 = new task('test task title', 'test task description');
 const testTask2 = new task('test task title2', 'test task description2');
 
 DOM.newProject.addEventListener('click', DOM.openProjectForm);
-DOM.addButton.addEventListener('click', DOM.addProjectToArray);
+DOM.addButton.addEventListener('click', DOM.addProjectToApp);
 DOM.cancelButton.addEventListener('click', DOM.closeProjectForm);
-//DOM.deleteBtn.addEventListener('click',DOM.getProjectByName);
+DOM.deleteBtn.addEventListener('click',DOM.deleteProject);
 DOM.projectsFromMenu.forEach(projectFromMenu => {projectFromMenu.addEventListener('click',DOM.populateProjectScreen)});
