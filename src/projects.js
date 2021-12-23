@@ -25,6 +25,10 @@ class task{
         this.description = description;
         this.checklist = false;
     }
+
+    addToProject(project){
+        project.tasks.push(this)
+    }
 }
 
 //const testProject = new project('test title', 'test description', 'test dueDate', 'test priority', 'test checklist')

@@ -228,11 +228,6 @@ label, input{
     width: 60%;
 }
 
-.addtask{
-    align-self: center;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-}
-
 .editicon{
     height:15px;
 }
@@ -245,5 +240,9 @@ label, input{
 
 .deleteicon:hover{
     transform: scale(1.5);
-    filter: saturate(7);
+}
+
+.addtaskbtn{
+    height:22px;
+    align-self: center;
 }

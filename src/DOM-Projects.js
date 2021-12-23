@@ -1,11 +1,11 @@
-import { project, projects } from "./projects";
+import { project, projects, task } from "./projects";
 
 export const newProject = document.querySelector('#add-project-btn');
 export const addButton = document.querySelector('#submit');
 export const cancelButton = document.querySelector('#cancel');
 export const projectsFromMenu = document.querySelectorAll('.project');
 export const deleteBtn = document.querySelector('.deletebutton');
-const projectName = document.querySelector('.project-name');
+export const projectName = document.querySelector('.project-name');
 const projectDate = document.querySelector('.project-date');
 const projectPriority = document.querySelector('.project-priority');
 
@@ -41,6 +41,7 @@ export const addProjectToApp = () => {
         alert("C'mon, be nice and fill all information")
     }else{
         const newProject = new project(nameInput.value,dateInput.value, priorityInput);
+        const newTask = new task('testetask');
         newProject.addToProjects()
         populateProjectMenu();
         closeProjectForm();
@@ -109,7 +110,7 @@ export const populateProjectScreen = (e) => {
     emptyDiv('.taskscontainer');
 }
 
-const getProjectByIndex = (projectName) => {
+export const getProjectByIndex = (projectName) => {
     let i = 0
     while(projects[i].title != projectName){
         i++
