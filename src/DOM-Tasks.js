@@ -15,7 +15,7 @@ export const addTaskToArray = () => {
     };
 }
 
-const createTaskDiv = (taskDescription) => {
+const createTaskDiv = (taskDescription, completed) => {
     const currentProject = projects[getProjectByIndex(projectName.textContent)];
 
     const taskContainer = createDiv('', 'task-container');
@@ -29,7 +29,9 @@ const createTaskDiv = (taskDescription) => {
     const taskLi = document.createElement('li');
     taskLi.classList.add('task');
     taskLi.textContent = taskDescription
-    //taskLi.dataset.tasknum = currentProject.tasks.length-1
+    if (completed == true){
+        taskLi.classList.add('taskcompleted');
+    }
     taskContainer.appendChild(taskLi);
 }
 
@@ -38,7 +40,7 @@ export const renderTasks = () => {
     const currentProject = projects[getProjectByIndex(projectName.textContent)];
     console.log(currentProject)
     for (let i = 0; i < currentProject.tasks.length; i++){
-        createTaskDiv(currentProject.tasks[i].description);
+        createTaskDiv(currentProject.tasks[i].description, currentProject.tasks[i].checklist);
     }
 
     const deleteBtns = document.querySelectorAll('.deleteicon');
@@ -50,6 +52,7 @@ export const renderTasks = () => {
     }
     
     deleteBtns.forEach(deleteBtn => {deleteBtn.addEventListener('click',deleteTask)});
+    taskDescs.forEach(taskDesc => {taskDesc.addEventListener('click',completeTask)});
 }
 
 export const addTaskWithEnter = (e) => {
@@ -60,14 +63,27 @@ export const addTaskWithEnter = (e) => {
     }
 }
 
-export const deleteTask = (e) => {
+const deleteTask = (e) => {
     const currentProject = projects[getProjectByIndex(projectName.textContent)];
 
     const taskIndex = e.target.dataset.tasknum;
-    console.log(taskIndex);
-
     currentProject.tasks.splice(taskIndex, 1);
 
     renderTasks();
 
 }
+
+const completeTask = (e) => {
+    const currentProject = projects[getProjectByIndex(projectName.textContent)];
+
+    const taskIndex = e.target.dataset.tasknum;
+    if (currentProject.tasks[taskIndex].checklist == false){
+        currentProject.tasks[taskIndex].checklist = true;
+    }else{
+        currentProject.tasks[taskIndex].checklist = false;
+    }
+
+    renderTasks();
+}
+
+

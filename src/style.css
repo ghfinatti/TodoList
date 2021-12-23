@@ -214,6 +214,11 @@ label, input{
     cursor:pointer;
 }
 
+.taskcompleted{
+    text-decoration: line-through;
+    color: red;
+}
+
 .deletebutton{
     height: 20px;
 }
