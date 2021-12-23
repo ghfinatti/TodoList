@@ -6,39 +6,50 @@ export const taskInput = document.querySelector('.taskinput');
 const tasksContainer = document.querySelector('.taskscontainer');
 
 export const addTaskToArray = () => {
-    const newTask = new task(taskInput.value);
-    const currentProject = projects[getProjectByIndex(projectName.textContent)];
-    newTask.addToProject(currentProject);
-
-    //createTaskDiv(newTask.description);
-    renderTasks();
-    console.log(projects)
+    if (taskInput.value != ""){ 
+        const newTask = new task(taskInput.value);
+        const currentProject = projects[getProjectByIndex(projectName.textContent)];
+        newTask.addToProject(currentProject);
+        taskInput.value = "";
+        renderTasks();
+    };
 }
 
 const createTaskDiv = (taskDescription) => {
+    const currentProject = projects[getProjectByIndex(projectName.textContent)];
+
     const taskContainer = createDiv('', 'task-container');
     tasksContainer.appendChild(taskContainer);
-
-    const taskLi = document.createElement('li');
-    taskLi.classList.add('task');
-    taskLi.textContent = taskDescription
-    taskContainer.appendChild(taskLi);
-
-    console.log(taskLi)
 
     const deleteIcon = document.createElement('img')
     deleteIcon.src = '/src/images/delete.png';
     deleteIcon.classList.add('deleteicon');
     taskContainer.appendChild(deleteIcon)
 
+    const taskLi = document.createElement('li');
+    taskLi.classList.add('task');
+    taskLi.textContent = taskDescription
+    //taskLi.dataset.tasknum = currentProject.tasks.length-1
+    taskContainer.appendChild(taskLi);
 }
 
-const renderTasks = () => {
+export const renderTasks = () => {
     emptyDiv('.taskscontainer');
     const currentProject = projects[getProjectByIndex(projectName.textContent)];
+    console.log(currentProject)
     for (let i = 0; i < currentProject.tasks.length; i++){
         createTaskDiv(currentProject.tasks[i].description);
     }
+
+    const deleteBtns = document.querySelectorAll('.deleteicon');
+    const taskDescs = document.querySelectorAll('.task');
+
+    for (let i = 0; i < deleteBtns.length; i++){
+        deleteBtns[i].dataset.tasknum = i;
+        taskDescs[i].dataset.tasknum = i;
+    }
+    
+    deleteBtns.forEach(deleteBtn => {deleteBtn.addEventListener('click',deleteTask)});
 }
 
 export const addTaskWithEnter = (e) => {
@@ -47,4 +58,16 @@ export const addTaskWithEnter = (e) => {
         addTaskBtn.click();
         e.target.value = "";
     }
+}
+
+export const deleteTask = (e) => {
+    const currentProject = projects[getProjectByIndex(projectName.textContent)];
+
+    const taskIndex = e.target.dataset.tasknum;
+    console.log(taskIndex);
+
+    currentProject.tasks.splice(taskIndex, 1);
+
+    renderTasks();
+
 }

@@ -1,4 +1,5 @@
 import { project, projects, task } from "./projects";
+import { renderTasks } from "./DOM-Tasks";
 
 export const newProject = document.querySelector('#add-project-btn');
 export const addButton = document.querySelector('#submit');
@@ -55,7 +56,7 @@ const updateToLastCreatedProject = () => {
     projectDate.textContent = `Date: ${projects[lastProjectIndex].dueDate}`;
     projectPriority.textContent = `Priority: ${projects[lastProjectIndex].priority}`;
     
-    //update with tasks logic
+    renderTasks();
 }
 
 export const createDiv = (text, cssClass) => {
@@ -106,8 +107,9 @@ export const populateProjectScreen = (e) => {
     projectName.textContent = `${projects[projectPosition].title}`;
     projectDate.textContent = `Date: ${projects[projectPosition].dueDate}`;
     projectPriority.textContent = `Priority: ${projects[projectPosition].priority}`;
+    
+    renderTasks();
 
-    emptyDiv('.taskscontainer');
 }
 
 export const getProjectByIndex = (projectName) => {
