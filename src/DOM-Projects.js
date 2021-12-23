@@ -58,7 +58,7 @@ const updateToLastCreatedProject = () => {
     //update with tasks logic
 }
 
-const createDiv = (text, cssClass) => {
+export const createDiv = (text, cssClass) => {
     const newElement = document.createElement('div');
     newElement.classList.add(cssClass);
     newElement.textContent = text;
@@ -93,7 +93,7 @@ const getPriority = () => {
     }
 }
 
-const emptyDiv = (div) => {
+export const emptyDiv = (div) => {
     const divToBeEmpty = document.querySelector(div);
     while (divToBeEmpty.firstChild){
         divToBeEmpty.removeChild(divToBeEmpty.lastChild);

@@ -1,5 +1,5 @@
 const projects = [
-    {title:"First Project",dueDate:"2050-12-25",priority:"High",tasks:[{title:"First Task",checklist:false},{title:"Second Task",checklist:false}]}
+    {title:"First Project",dueDate:"2050-12-25",priority:"High",tasks:[]}
 ];
 
 class project{
