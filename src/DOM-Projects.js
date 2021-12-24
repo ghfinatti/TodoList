@@ -6,12 +6,20 @@ export const addButton = document.querySelector('#submit');
 export const cancelButton = document.querySelector('#cancel');
 export const projectsFromMenu = document.querySelectorAll('.project');
 export const deleteBtn = document.querySelector('.deletebutton');
+export const editBtn = document.querySelector('.editbutton');
 export const projectName = document.querySelector('.project-name');
+
 const projectDate = document.querySelector('.project-date');
 const projectPriority = document.querySelector('.project-priority');
 
+const priorityInput = document.querySelectorAll('.priority-btns');
+const nameInput = document.querySelector('#name');
+const dateInput = document.querySelector('#date');
+
 export const openProjectForm = () => {
     const projectForm = document.querySelector('.project-form');
+    nameInput.value = "";
+    dateInput.value = "";
     if (getComputedStyle(projectForm).zIndex == "-1"){
         projectForm.style.zIndex = "0";
         projectForm.animate([
@@ -31,18 +39,15 @@ export const closeProjectForm = () => {
 };
 
 export const addProjectToApp = () => {
-    const nameInput = document.querySelector('#name');
-    const dateInput = document.querySelector('#date');
-    const priorityInput = getPriority()
+    const priority = getPriority(priorityInput)
     const repeatedName = checkForRepeatedName(nameInput.value);
     if (repeatedName == true){
         alert("Project name already used")
     }
-    else if (priorityInput === null || nameInput.value == "" || dateInput.value == ""){
+    else if (priority === null || nameInput.value == "" || dateInput.value == ""){
         alert("C'mon, be nice and fill all information")
     }else{
-        const newProject = new project(nameInput.value,dateInput.value, priorityInput);
-        const newTask = new task('testetask');
+        const newProject = new project(nameInput.value,dateInput.value, priority);
         newProject.addToProjects()
         populateProjectMenu();
         closeProjectForm();
@@ -81,13 +86,12 @@ const addProjectToMenu = (projectName) => {
 };
 
 
-const getPriority = () => {
-    const priorityInput = document.querySelectorAll('.priority-btns');
-    if (priorityInput[0].checked == true){
+const getPriority = (priorityNode) => {
+    if (priorityNode[0].checked == true){
         return "High"
-    }else if(priorityInput[1].checked == true){
+    }else if(priorityNode[1].checked == true){
         return "Normal"
-    }else if(priorityInput[2].checked == true){
+    }else if(priorityNode[2].checked == true){
         return "Low"
     }else{
         return null
@@ -146,5 +150,58 @@ export const deleteProject = () => {
         updateToLastCreatedProject();
     }else{
         alert(`You can't delete all projects`);
+    }
+}
+
+export const editProject = () => {
+    addButton.value = "Edit";
+    addButton.removeEventListener('click', addProjectToApp);
+    
+    openProjectForm();
+    
+    const currentProject = projects[getProjectByIndex(projectName.textContent)];
+    const dateString = projectDate.textContent.split(" ")[1]
+    const priorityString = projectPriority.textContent.split(" ")[1]
+    
+    dateInput.value = dateString;
+    nameInput.value = projectName.textContent;
+    
+    if(priorityString == "High"){
+        priorityInput[0].checked = true
+    } else if (priorityString == "Normal"){
+        priorityInput[1].checked = true
+    } else {
+        priorityInput[2].checked = true
+    }
+
+    addButton.addEventListener('click', editProjectArray)
+
+}
+
+const editProjectArray = () => {
+    const currentProject = projects[getProjectByIndex(projectName.textContent)];
+    const priority = getPriority(priorityInput);
+    const repeatedName = checkForRepeatedName(nameInput.value);
+    const checkNameChange = !(projectName.textContent = nameInput.value);
+    if (repeatedName == true && checkNameChange == true){
+        alert("Project name already used");
+    }
+    else if (priority === null || nameInput.value == "" || dateInput.value == ""){
+        alert("C'mon, be nice and fill all information");
+    }else{
+        currentProject.title = nameInput.value;
+        currentProject.dueDate = dateInput.value;
+        currentProject.priority = priority;
+
+        projectName.textContent = `${currentProject.title}`;
+        projectDate.textContent = `Date: ${currentProject.dueDate}`;
+        projectPriority.textContent = `Priority: ${currentProject.priority}`;
+        
+        populateProjectMenu();
+        closeProjectForm();
+        addButton.value = "Add";
+        addButton.removeEventListener('click', editProjectArray);
+        addButton.addEventListener('click', addProjectToApp);
+        console.log(projects)
     }
 }

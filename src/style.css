@@ -102,14 +102,14 @@ label, input{
     justify-content: flex-end;
 }
 
-#cancel, #submit{
+#cancel, #submit, #edit{
     background-color:rgba(211, 212, 255, 1);
     width: 20%;
     border: 1px solid black;
     border-radius: 5px;
 }
 
-#cancel:hover, #submit:hover{
+#cancel:hover, #submit:hover, #edit:hover{
     background-color:rgb(151, 152, 255);
     cursor: pointer;
 }
