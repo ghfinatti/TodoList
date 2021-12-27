@@ -145,7 +145,6 @@ export const deleteProject = () => {
     if (projects.length > 1){
         const projectPosition = getProjectByIndex(projectName.textContent);
         projects.splice(projectPosition,1);
-        console.log(projects)
         populateProjectMenu();
         updateToLastCreatedProject();
     }else{
@@ -202,6 +201,5 @@ const editProjectArray = () => {
         addButton.value = "Add";
         addButton.removeEventListener('click', editProjectArray);
         addButton.addEventListener('click', addProjectToApp);
-        console.log(projects)
     }
 }

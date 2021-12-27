@@ -38,7 +38,6 @@ const createTaskDiv = (taskDescription, completed) => {
 export const renderTasks = () => {
     emptyDiv('.taskscontainer');
     const currentProject = projects[getProjectByIndex(projectName.textContent)];
-    console.log(currentProject)
     for (let i = 0; i < currentProject.tasks.length; i++){
         createTaskDiv(currentProject.tasks[i].description, currentProject.tasks[i].checklist);
     }

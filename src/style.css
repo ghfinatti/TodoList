@@ -22,17 +22,12 @@ body{
     width: 100%;
     height: 15%;
     min-height: 130px;
-}
-
-.left-header{
-    display: flex;
-    width:fit-content;
     align-items: center;
-    min-height: 130px;
 }
 
 .logoimg{
-    width: 8%;
+    width: 65px;
+    min-width: 65px;
     margin:20px;
 }
 
@@ -47,6 +42,7 @@ h1{
     width: 15%;
     height: 85%;
     background-color: rgb(201, 173, 167);
+    overflow:scroll;
 }
 
 .todos-display{
@@ -71,6 +67,7 @@ h1{
     min-height: 245px;
     width: 20%;
     height: 30%;
+    max-height: 247px;
     backdrop-filter: blur(64px) saturate(100%);
     -webkit-backdrop-filter: blur(64px) saturate(100%);
     background-color: rgba(0, 0, 0, 0.32);
@@ -121,6 +118,7 @@ label, input{
     border:solid 1px black;
     height: 25px;
     width: 50%;
+    min-width: fit-content;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-size:13px;
 }
@@ -163,17 +161,19 @@ label, input{
 
 .project-header{
     display: flex;
-    flex-wrap: wrap;
-    justify-content:space-evenly;
+    min-width:507px;
+    justify-content:flex-start;
     margin-top: 15px;
+    margin-left: 15px;
     width: 60%;
-    height: fit-content;
     color:black;
 }
 
 .project-date, .project-name, .project-priority{
     font-size: 1.2rem;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
+    align-self: center;
+    margin-left: 50px;
 }
 
 .project-tasks{
@@ -183,9 +183,11 @@ label, input{
     border-radius: 5px;
     width: 60%;
     height: 75%;
+    min-width: 512px;
     margin-top: 10px;
     margin-left: 15px;
     box-shadow: 0px 0px 4px rgb(131, 131, 131);
+    overflow:scroll;
 }
 
 .task-container{
@@ -217,10 +219,6 @@ label, input{
 .taskcompleted{
     text-decoration: line-through;
     color: red;
-}
-
-.deletebutton{
-    height: 20px;
 }
 
 .taskscontainer{
@@ -256,4 +254,63 @@ label, input{
 .addtaskbtn{
     height:22px;
     align-self: center;
+}
+
+.editbutton, .deletebutton{
+    width: 22px;
+    height: 22px;
+    margin-left: 50px;
+}
+
+.editbtncontainer, .deletebtncontainer{
+    display:flex;
+    flex-direction: row;
+    align-self: center;
+}
+
+.edittext, .deletetext{
+    display: none;
+    align-self: center;
+    padding-left: 5px;
+    border-bottom: 1px solid black;
+    border-top: 1px solid black;
+    border-right: 1px solid black;
+    border-radius: 0px 5px 5px 0px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 14px;
+    padding-right: 5px;
+}
+.editbtncontainer:hover .edittext{
+    display:block;
+    animation-name: test;
+    animation-duration: 0.7s;
+}
+
+.deletebtncontainer:hover .deletetext{
+    display:block;
+    animation-name: test;
+    animation-duration: 0.7s;
+}
+
+@keyframes test{
+    0%{width: 0%}
+    25%{width: 25%}
+    50%{width: 50%}
+    100%{width: 100%}
+}
+
+
+@media screen and (max-width: 950px ) {
+    .menu-title{
+        font-size: 12px;
+    }
+
+    #add-project-btn, .menuprojectname, .arrow{
+        font-size: 10px;
+    }
+
+    .project-date, .project-name, .project-priority{
+        font-size: 14px;
+        align-self: center;
+    }
 }
