@@ -1,4 +1,7 @@
-const projects = [
+import * as DOMProj from './DOM-Projects';
+import * as DOMTask from './DOM-Tasks';
+
+let projects = [
     {title:"First Project",dueDate:"2050-12-25",priority:"High",tasks:[]}
 ];
 
@@ -31,6 +34,19 @@ class task{
     }
 }
 
-//const testProject = new project('test title', 'test description', 'test dueDate', 'test priority', 'test checklist')
+function saveLocalStorage(){
+    localStorage.setItem('projects', JSON.stringify(projects));
+}
 
-export { project, task, projects }
+function restoreLocalStorage(){
+    projects = JSON.parse(localStorage.getItem('projects'));
+    console.log(projects)
+    DOMProj.populateProjectMenu();
+    DOMProj.projectName.textContent = `${projects[0].title}`;
+    DOMProj.projectDate.textContent = `Date: ${projects[0].dueDate}`;
+    DOMProj.projectPriority.textContent = `Priority: ${projects[0].priority}`;
+
+    DOMTask.renderTasks();
+}
+
+export { project, task, projects, saveLocalStorage, restoreLocalStorage }

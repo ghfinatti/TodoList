@@ -1,4 +1,4 @@
-import { task, projects, project } from "./projects";
+import { task, projects, saveLocalStorage } from "./projects";
 import { projectName, getProjectByIndex, createDiv, emptyDiv } from "./DOM-Projects";
 
 export const addTaskBtn = document.querySelector('.addtaskbtn');
@@ -12,6 +12,7 @@ export const addTaskToArray = () => {
         newTask.addToProject(currentProject);
         taskInput.value = "";
         renderTasks();
+        saveLocalStorage();
     };
 }
 

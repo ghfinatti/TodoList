@@ -1,4 +1,4 @@
-import { project, projects, task } from "./projects";
+import { project, projects, saveLocalStorage } from "./projects";
 import { renderTasks } from "./DOM-Tasks";
 
 export const newProject = document.querySelector('#add-project-btn');
@@ -8,9 +8,8 @@ export const projectsFromMenu = document.querySelectorAll('.project');
 export const deleteBtn = document.querySelector('.deletebutton');
 export const editBtn = document.querySelector('.editbutton');
 export const projectName = document.querySelector('.project-name');
-
-const projectDate = document.querySelector('.project-date');
-const projectPriority = document.querySelector('.project-priority');
+export const projectDate = document.querySelector('.project-date');
+export const projectPriority = document.querySelector('.project-priority');
 
 const priorityInput = document.querySelectorAll('.priority-btns');
 const nameInput = document.querySelector('#name');
@@ -52,6 +51,7 @@ export const addProjectToApp = () => {
         populateProjectMenu();
         closeProjectForm();
         updateToLastCreatedProject();
+        saveLocalStorage();
     }
 };
 
@@ -134,7 +134,7 @@ const checkForRepeatedName = (name) => {
     return repeatedName
 }
 
-const populateProjectMenu = () => {
+export const populateProjectMenu = () => {
     emptyDiv('.projects-container');
     for (let i = 0; i < projects.length;i++){
         addProjectToMenu(projects[i].title);
@@ -158,7 +158,7 @@ export const editProject = () => {
     
     openProjectForm();
     
-    const currentProject = projects[getProjectByIndex(projectName.textContent)];
+    //const currentProject = projects[getProjectByIndex(projectName.textContent)];
     const dateString = projectDate.textContent.split(" ")[1]
     const priorityString = projectPriority.textContent.split(" ")[1]
     
@@ -201,5 +201,6 @@ const editProjectArray = () => {
         addButton.value = "Add";
         addButton.removeEventListener('click', editProjectArray);
         addButton.addEventListener('click', addProjectToApp);
+        saveLocalStorage();
     }
 }
