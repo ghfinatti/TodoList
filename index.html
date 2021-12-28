@@ -14,30 +14,26 @@
       <div class="nav-menu">
         <div class="menu-title">Your Projects</div>
         <div class="projects-container">
-          <div class="project" data-projectnum="0">
-            <div class="menuprojectname">First Project</div>
-            <div class="arrow">></div>
-          </div>
         </div>
         <input type="button" id="add-project-btn" value="Add Project">
       </div>
       <div class="todos-display">
         <div class="project-header">
-          <div class="project-name">First Project</div>
-          <div class="project-date">Date: 2050-12-25</div>
-          <div class="project-priority">Priority: High</div>
-          <div class="editbtncontainer">
+          <div class="project-name"></div>
+          <div class="project-date"></div>
+          <div class="project-priority"></div>
+          <div class="tooltip">
             <img src='/src/images/edit.png' class="editbutton">
-            <div class='edittext'>Edit</div>
+            <span class='tooltiptext'>Edit Project</span>
           </div>
-          <div class="deletebtncontainer">
+          <div class="tooltip">
             <img src='/src/images/delete.png' class="deletebutton">
-            <div class='deletetext'>Delete</div>
+            <span class='tooltiptext'>Delete Project</span>
           </div>
         </div>
         <div class="project-tasks">
           <div class="addtaskcontainer">
-            <input class="taskinput" type="text">
+            <input class="taskinput" maxlength="70" type="text">
             <button class="addtaskbtn">Add Task</button>
           </div>
           <ol class="taskscontainer">
@@ -48,7 +44,7 @@
         <div class="form-title">New Project</div>
         <form>
           <label for="name">Name:</label><br>
-          <input type="text" maxlength="18" id="name"><br>
+          <input type="text" maxlength="22" id="name"><br>
           <label for="date">Due date:</label><br>
           <input type="date" id="date"><br>
           <label>Priority:</label>
