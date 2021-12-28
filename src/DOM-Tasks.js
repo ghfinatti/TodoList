@@ -70,6 +70,7 @@ const deleteTask = (e) => {
     currentProject.tasks.splice(taskIndex, 1);
 
     renderTasks();
+    saveLocalStorage();
 
 }
 

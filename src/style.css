@@ -161,8 +161,8 @@ label, input{
 
 .project-header{
     display: flex;
+    justify-content: space-evenly;
     min-width:507px;
-    justify-content:flex-start;
     margin-top: 15px;
     margin-left: 15px;
     width: 60%;
@@ -173,7 +173,6 @@ label, input{
     font-size: 1.2rem;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     align-self: center;
-    margin-left: 50px;
 }
 
 .project-tasks{
@@ -259,48 +258,60 @@ label, input{
 .editbutton, .deletebutton{
     width: 22px;
     height: 22px;
-    margin-left: 50px;
+    cursor:pointer;
+    margin-top: 5px;
+    margin-bottom: 5px;
 }
 
-.editbtncontainer, .deletebtncontainer{
-    display:flex;
-    flex-direction: row;
-    align-self: center;
+.tooltip{
+    position: relative;
+    display: inline-block;
+    padding-top:5px;
 }
 
-.edittext, .deletetext{
-    display: none;
-    align-self: center;
-    padding-left: 5px;
-    border-bottom: 1px solid black;
-    border-top: 1px solid black;
-    border-right: 1px solid black;
-    border-radius: 0px 5px 5px 0px;
+.tooltip .tooltiptext{
+    visibility: hidden;
+    width: 120px;
+    background-color: rgba(0,0,0,0.5);
+    color: #fff;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+    position: absolute;
+    z-index: 1;
+    top: 100%;
+    left: 50%;
+    margin-left: -60px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-size: 14px;
-    padding-right: 5px;
-}
-.editbtncontainer:hover .edittext{
-    display:block;
-    animation-name: test;
-    animation-duration: 0.7s;
 }
 
-.deletebtncontainer:hover .deletetext{
-    display:block;
-    animation-name: test;
-    animation-duration: 0.7s;
+.tooltip:hover .tooltiptext {
+    visibility: visible;
 }
 
-@keyframes test{
-    0%{width: 0%}
-    25%{width: 25%}
-    50%{width: 50%}
-    100%{width: 100%}
+.tooltip .tooltiptext::after {
+    content: " ";
+    position: absolute;
+    bottom: 100%;  /* At the top of the tooltip */
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent transparent black transparent;
+}
+
+.tooltip .tooltiptext {
+    opacity: 0;
+    transition: opacity 1s;
+}
+  
+.tooltip:hover .tooltiptext {
+    opacity: 1;
 }
 
 
-@media screen and (max-width: 950px ) {
+@media screen and (max-width: 950px) {
     .menu-title{
         font-size: 12px;
     }

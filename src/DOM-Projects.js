@@ -1,5 +1,6 @@
 import { project, projects, saveLocalStorage } from "./projects";
 import { renderTasks } from "./DOM-Tasks";
+import {format, isFuture} from 'date-fns';
 
 export const newProject = document.querySelector('#add-project-btn');
 export const addButton = document.querySelector('#submit');
@@ -40,11 +41,15 @@ export const closeProjectForm = () => {
 export const addProjectToApp = () => {
     const priority = getPriority(priorityInput)
     const repeatedName = checkForRepeatedName(nameInput.value);
+    const formattedDate = changeDateFormat(dateInput.value);
+    console.log(isFuture(formattedDate))
     if (repeatedName == true){
         alert("Project name already used")
     }
     else if (priority === null || nameInput.value == "" || dateInput.value == ""){
         alert("C'mon, be nice and fill all information")
+    }else if (isFuture(formattedDate) == false){
+        alert("Choose a future date")
     }else{
         const newProject = new project(nameInput.value,dateInput.value, priority);
         newProject.addToProjects()
@@ -147,6 +152,7 @@ export const deleteProject = () => {
         projects.splice(projectPosition,1);
         populateProjectMenu();
         updateToLastCreatedProject();
+        saveLocalStorage();
     }else{
         alert(`You can't delete all projects`);
     }
@@ -203,4 +209,24 @@ const editProjectArray = () => {
         addButton.addEventListener('click', addProjectToApp);
         saveLocalStorage();
     }
+}
+
+const changeDateFormat = (date) => {
+    const year = date.slice(0,4)
+    const month = date.slice(5,7)-1
+    const day = date.slice(8,10)
+    const newDate = new Date(year,month,day)
+    return newDate
+}
+
+const renderProjectHeader = () => {
+    projectName.textContent = `${projects[0].title}`;
+    projectDate.textContent = `Date: ${projects[0].dueDate}`;
+    projectPriority.textContent = `Priority: ${projects[0].priority}`;
+}
+
+export const renderUI = () => {
+    renderProjectHeader();
+    renderTasks();
+    populateProjectMenu();
 }
