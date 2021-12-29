@@ -42,7 +42,6 @@ export const addProjectToApp = () => {
     const priority = getPriority(priorityInput)
     const repeatedName = checkForRepeatedName(nameInput.value);
     const formattedDate = changeDateFormat(dateInput.value);
-    console.log(isFuture(formattedDate))
     if (repeatedName == true){
         alert("Project name already used")
     }
@@ -164,7 +163,6 @@ export const editProject = () => {
     
     openProjectForm();
     
-    //const currentProject = projects[getProjectByIndex(projectName.textContent)];
     const dateString = projectDate.textContent.split(" ")[1]
     const priorityString = projectPriority.textContent.split(" ")[1]
     
@@ -188,11 +186,14 @@ const editProjectArray = () => {
     const priority = getPriority(priorityInput);
     const repeatedName = checkForRepeatedName(nameInput.value);
     const checkNameChange = !(projectName.textContent = nameInput.value);
+    const formattedDate = changeDateFormat(dateInput.value);
     if (repeatedName == true && checkNameChange == true){
         alert("Project name already used");
     }
     else if (priority === null || nameInput.value == "" || dateInput.value == ""){
         alert("C'mon, be nice and fill all information");
+    }else if (isFuture(formattedDate) == false){
+        alert("Choose a future date")
     }else{
         currentProject.title = nameInput.value;
         currentProject.dueDate = dateInput.value;
