@@ -57,12 +57,6 @@ function restoreLocalStorage(){
                 {description:"Learn Node.js",checklist:false}]}
         ];
     }
-    DOMProj.populateProjectMenu();
-    DOMProj.projectName.textContent = `${projects[0].title}`;
-    DOMProj.projectDate.textContent = `Date: ${projects[0].dueDate}`;
-    DOMProj.projectPriority.textContent = `Priority: ${projects[0].priority}`;
-
-    DOMTask.renderTasks();
 }
 
 export { project, task, projects, saveLocalStorage, restoreLocalStorage }
