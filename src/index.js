@@ -16,5 +16,4 @@ DOMProj.editBtn.addEventListener('click',DOMProj.editProject);
 DOMTask.addTaskBtn.addEventListener('click', DOMTask.addTaskToArray);
 DOMTask.taskInput.addEventListener('keyup', DOMTask.addTaskWithEnter);
 
-restoreLocalStorage();
 DOMProj.renderUI();

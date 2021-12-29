@@ -1,4 +1,4 @@
-import { project, projects, saveLocalStorage } from "./projects";
+import { project, projects, restoreLocalStorage, saveLocalStorage } from "./projects";
 import { renderTasks } from "./DOM-Tasks";
 import {format, isFuture} from 'date-fns';
 
@@ -226,6 +226,7 @@ const renderProjectHeader = () => {
 }
 
 export const renderUI = () => {
+    restoreLocalStorage();
     renderProjectHeader();
     renderTasks();
     populateProjectMenu();
