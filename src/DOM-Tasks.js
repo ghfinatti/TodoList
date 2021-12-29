@@ -23,7 +23,7 @@ const createTaskDiv = (taskDescription, completed) => {
     tasksContainer.appendChild(taskContainer);
 
     const deleteIcon = document.createElement('img')
-    deleteIcon.src = '/src/images/delete.png';
+    deleteIcon.src = 'images/delete.png';
     deleteIcon.classList.add('deleteicon');
     taskContainer.appendChild(deleteIcon)
 

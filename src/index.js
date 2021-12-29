@@ -1,7 +1,8 @@
-import './style.css';
+import '/dist/style.css';
 import { restoreLocalStorage } from './projects';
 import * as DOMProj from './DOM-Projects';
 import * as DOMTask from './DOM-Tasks';
+import * as Classes from './projects';
 
 //projects listeners
 DOMProj.newProject.addEventListener('click', DOMProj.openProjectForm);
