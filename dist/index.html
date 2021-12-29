@@ -23,13 +23,15 @@
           <div class="project-name"></div>
           <div class="project-date"></div>
           <div class="project-priority"></div>
-          <div class="tooltip">
-            <img src='images/edit.png' class="editbutton">
-            <span class='tooltiptext'>Edit Project</span>
-          </div>
-          <div class="tooltip">
-            <img src='images/delete.png' class="deletebutton">
-            <span class='tooltiptext'>Delete Project</span>
+          <div class=buttonscontainer>
+            <div class="tooltip">
+              <img src='images/edit.png' class="editbutton">
+              <span class='tooltiptext'>Edit Project</span>
+            </div>
+            <div class="tooltip">
+              <img src='images/delete.png' class="deletebutton">
+              <span class='tooltiptext'>Delete Project</span>
+            </div>
           </div>
         </div>
         <div class="project-tasks">
@@ -43,7 +45,7 @@
     </body>
       <div class="project-form">
         <div class="form-title">New Project</div>
-        <form>
+        <div class="form">
           <label for="name">Name:</label><br>
           <input type="text" maxlength="22" id="name"><br>
           <label for="date">Due date:</label><br>
@@ -61,7 +63,7 @@
             <input type="button" id="cancel" value="Cancel">
             <input type="button" id="submit" value="Add">
           </div>
-        </form>
+        </div>
       </div>
     <script src="main.js"></script>
 </html>

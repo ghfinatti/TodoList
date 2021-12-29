@@ -15,6 +15,7 @@ export const projectPriority = document.querySelector('.project-priority');
 const priorityInput = document.querySelectorAll('.priority-btns');
 const nameInput = document.querySelector('#name');
 const dateInput = document.querySelector('#date');
+const formTitle = document.querySelector('.form-title');
 
 export const openProjectForm = () => {
     const projectForm = document.querySelector('.project-form');
@@ -36,6 +37,9 @@ export const closeProjectForm = () => {
         {transform: "scale(0)",}
     ], 150);
     setTimeout(() => {projectForm.style.zIndex = "-1"}, 150);
+    formTitle.textContent = "New Project"
+    addButton.value = "Add";
+
 };
 
 export const addProjectToApp = () => {
@@ -159,6 +163,7 @@ export const deleteProject = () => {
 
 export const editProject = () => {
     addButton.value = "Edit";
+    formTitle.textContent = "Edit Project"
     addButton.removeEventListener('click', addProjectToApp);
     
     openProjectForm();
@@ -205,7 +210,6 @@ const editProjectArray = () => {
         
         populateProjectMenu();
         closeProjectForm();
-        addButton.value = "Add";
         addButton.removeEventListener('click', editProjectArray);
         addButton.addEventListener('click', addProjectToApp);
         saveLocalStorage();
