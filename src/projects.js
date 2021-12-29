@@ -46,6 +46,17 @@ function saveLocalStorage(){
 
 function restoreLocalStorage(){
     projects = JSON.parse(localStorage.getItem('projects'));
+    if (projects == null){
+        projects = [
+            {title:"Finish Odin Project",dueDate:"2022-04-01",priority:"High",
+            tasks:[
+                {description:"Finish Foundations",checklist:true},
+                {description:"Finish To-do App",checklist:true},
+                {description:"Finish JavaScript",checklist:false},
+                {description:"Learn React",checklist:false},
+                {description:"Learn Node.js",checklist:false}]}
+        ];
+    }
     DOMProj.populateProjectMenu();
     DOMProj.projectName.textContent = `${projects[0].title}`;
     DOMProj.projectDate.textContent = `Date: ${projects[0].dueDate}`;
