@@ -33,7 +33,7 @@ body{
 
 h1{
     color:white;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .nav-menu{
@@ -42,7 +42,7 @@ h1{
     width: 15%;
     height: 85%;
     background-color: rgb(201, 173, 167);
-    overflow:scroll;
+    overflow-y:scroll;
 }
 
 .todos-display{
@@ -64,28 +64,21 @@ h1{
     right:0;
     margin:auto;
     min-width: 386px;
-    min-height: 245px;
+    min-height: 220px;
     width: 20%;
-    height: 30%;
+    height: 25%;
     max-height: 247px;
     backdrop-filter: blur(64px) saturate(100%);
     -webkit-backdrop-filter: blur(64px) saturate(100%);
-    background-color: rgba(0, 0, 0, 0.32);
+    background-color: rgba(0, 0, 0, 0.45);
     border-radius: 12px;
     border: 1px solid rgba(255, 255, 255, 0.3);
-    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-family:Arial, Helvetica, sans-serif;
 }
 
 .form-title{
     align-self: center;
     margin-top: 15px;
-}
-
-form{
-    display: flex;
-    flex-direction: column;
-    margin-right: 5%;
-    margin-left: 5%;
 }
 
 label, input{
@@ -119,7 +112,7 @@ label, input{
     height: 25px;
     width: 50%;
     min-width: fit-content;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
     font-size:13px;
 }
 
@@ -133,20 +126,30 @@ label, input{
     margin-top: 10px;
     align-self: center;
     font-weight: 200;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .project{
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
     font-size: 14px;
     margin:10px;
     display:flex;
     justify-content: space-between;
 }
 
+#name, #date{
+    width: 90%;
+    padding:2px;
+    height: 15px;
+}
+
+.form{
+    width: 90%;
+    align-self: center;
+}
+
 .menuprojectname:hover{
     border-bottom: solid 1px rgba(0,0,0,0.5);
-    ;
     cursor: pointer;
 }
 
@@ -171,7 +174,7 @@ label, input{
 
 .project-date, .project-name, .project-priority{
     font-size: 1.2rem;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
     align-self: center;
 }
 
@@ -186,7 +189,7 @@ label, input{
     margin-top: 10px;
     margin-left: 15px;
     box-shadow: 0px 0px 4px rgb(131, 131, 131);
-    overflow:scroll;
+    overflow-y:scroll;
 }
 
 .task-container{
@@ -203,7 +206,7 @@ label, input{
 }
 
 .task{
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
     font-size: 15px;
     height: 15px;
     margin-top: 5px;
@@ -282,7 +285,7 @@ label, input{
     top: 100%;
     left: 50%;
     margin-left: -60px;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
     font-size: 14px;
 }
 
@@ -310,18 +313,120 @@ label, input{
     opacity: 1;
 }
 
+.buttonscontainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width:10%;
+
+}
+
 
 @media screen and (max-width: 950px) {
+    html{
+        width:100%;
+        height:100%;
+        display:flex;
+        flex-direction: column;
+    }
+
+    .nav-menu{
+        height: 150px;
+        width:100%;
+        overflow:hidden;
+    }
+
     .menu-title{
-        font-size: 12px;
+        font-size: 16px;
+        margin-bottom: 10px;
+    }
+
+    .todos-display{
+        width: 100%;
+    }
+
+    .project-tasks, .project-header{
+        align-self:center;
+        min-width: 50px;
+        width:90%;
+        margin: 0px;
+    }
+
+    .project-header{
+        padding-top: 10px;
+    }
+
+    .projects-container{
+        display:flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        width: 90%;
+        height:50%;
+        overflow-x: scroll;
+        margin-bottom: 10px;
+    }
+
+    .project-header{
+        display:flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        margin: 2px;
+        width: 100%;
+    }
+
+    .project-form{
+        min-width: 50px;
+        width: 80%;
+    }
+    
+    .taskscontainer{
+        padding: 5px;
+    }
+
+    .header{
+        width: 100%;
+        min-height:60px;
+        height:10%;
+        justify-content: center;
+    }
+
+    h1{
+        font-size: 30px;
+    }
+
+    .logoimg{
+        width: 30px;
+        min-width:30px;
     }
 
     #add-project-btn, .menuprojectname, .arrow{
-        font-size: 10px;
+        font-size: 12px;
     }
 
     .project-date, .project-name, .project-priority{
         font-size: 14px;
         align-self: center;
+    }
+
+    .buttonscontainer{
+        align-self: center;
+        width: 15%;
+    }
+
+    .project{
+        margin: 5px;
+        width:fit-content;
+    }
+
+    #add-project-btn{
+        font-size: 15px;
+        min-width: 150px;
+        width: 150px;
+    }
+
+    .editbutton, .deletebutton{
+        width: 15px;
+        height: 15px;
     }
 }
